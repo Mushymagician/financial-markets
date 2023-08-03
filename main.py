@@ -21,10 +21,13 @@ data.to_csv('tsla.csv')
 
 '''
 
-
+#reading data from csv file 
 df = pd.read_csv('tsla.csv', index_col = 0, parse_dates = True)
+
+#Resampling for Candlestick graph using Adj. Close and Volume
 
 df_ohlc = df['Adj Close'].resample('10D').ohlc()
 df_vol = df['Volume'].resample('10D').sum()
 
 mpl.plot(df_ohlc, type = 'candle', style = 'yahoo')
+
